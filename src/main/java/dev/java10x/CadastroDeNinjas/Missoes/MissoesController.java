@@ -25,8 +25,8 @@ public class MissoesController {
     }
 
     @PostMapping("/criar")
-    public String criarMissoes(){
-        return "Criar missoes no BD";
+    public MissoesModel criarMissao(@RequestBody MissoesModel missao){
+        return missoesService.criarMissao(missao);
     }
 
     @PutMapping("/atualizar")
