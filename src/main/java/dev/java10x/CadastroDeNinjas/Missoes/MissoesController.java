@@ -29,14 +29,14 @@ public class MissoesController {
         return missoesService.criarMissao(missao);
     }
 
-    @PutMapping("/atualizar")
-    public String atualizarMissoes(){
-        return "Atualiza a missao no banco de dados";
+    @PutMapping("/atualizar/{id}")
+    public MissoesModel atualizarMissoes(@PathVariable Long id, @RequestBody MissoesModel missaoatualizada){
+        return missoesService.atualizarMissao(id, missaoatualizada);
     }
 
-    @DeleteMapping("/deletar")
-    public String deletar(){
-        return "Deleta a missao no banco de dados";
+    @DeleteMapping("/deletar/{od}")
+    public void deletarMissaoPorId(@PathVariable Long id){
+        missoesService.deletarMissaoPorId(id);
     }
 
 }
