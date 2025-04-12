@@ -20,7 +20,7 @@ public class MissoesService {
 
     public List<MissoesDTO> listarMissoes(){
         List<MissoesModel> missoesModels = missoesRepository.findAll();
-        return missoesModels.stream().map(missoesMapper::mao).collect(Collectors.toList());
+        return missoesModels.stream().map(missoesMapper::map).collect(Collectors.toList());
     }
 
     public MissoesDTO listarMissoesPorId(Long id){
@@ -31,7 +31,7 @@ public class MissoesService {
     public MissoesDTO criarMissao(MissoesDTO missaoDTO){
         MissoesModel missoesModel = missoesMapper.map(missaoDTO);
         missoesModel = missoesRepository.save(missoesModel);
-        return missoesMapper.ma;
+        return missoesMapper.map(missoesModel);
     }
 
     public void deletarMissaoPorId(Long id){
@@ -44,7 +44,8 @@ public class MissoesService {
             MissoesModel missaoAtualizada = missoesMapper.map(missaoDTO);
             missaoAtualizada.setId(id);
             MissoesModel missaoSalva = missoesRepository.save(missaoAtualizada);
-            return missoesMapper.map(missaoSalva;
+            return missoesMapper.map(missaoSalva);
         }
+        return null;
     }
 }
